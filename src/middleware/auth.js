@@ -8,7 +8,7 @@ const authentication = async (req, res, next) => {
         const isValid = jwt.verify(authToken, process.env.JWT_TOKEN);
         if (isValid) {
             const user = await User.findOne({ _id: isValid._id, "tokens.token": authToken });
-            if (!user) { throw new Error(); }
+            if (!user) { throw new Error("Could not authenticate"); }
             req.info = user;
             req.currentToken = authToken;
             next();
