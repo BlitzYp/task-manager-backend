@@ -89,7 +89,7 @@ router.delete("/users/deleteMe", authentication, async (req, res) => {
     try {
         const { email, name } = req.info;
         await req.info.remove();
-        await sendByeEmail(email, name);
+        sendByeEmail(email, name);
         res.status(200).send(req.info);
     }
     catch (err) {
