@@ -13,7 +13,6 @@ const sendMailToNewUser = async (email, name) => {
             text: `Thank you, ${name} for signing up for task manager app! I hope you enjoy it!`,
         }
         await sgm.send(msg);
-        console.log("email sent!");
     }
     catch (err) {
         throw new Error("Could not send email");
